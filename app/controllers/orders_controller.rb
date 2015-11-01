@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 
 	def merchant_search
-		client = Delivery::Client.new 'x'
+		client = Delivery::Client.new 'NDhkNDYyZTBjOWYwOTMwYmZmNDQyNmY0ZmI5NDdlMzZh'
 		
 		result = client.search(params["location"])
 		results_hash = {}
