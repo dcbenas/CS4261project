@@ -7,7 +7,8 @@ class OrdersController < ApplicationController
 		results_hash = {}
 
 		result.merchants.each do |m|
-			puts m.cuisines
+			puts m
+			puts "\n\n\n"
 			results_hash[m.id] = {
 				name: m.summary.name,
 				address: "#{m.location.street}, #{m.location.city}, #{m.location.state}",
