@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 
 	def merchant_search
-		client = Delivery::Client.new 'NDhkNDYyZTBjOWYwOTMwYmZmNDQyNmY0ZmI5NDdlMzZh'
+		client = Delivery::Client.new('MTExNTBjNTgyOGQ0NTFiOTc0ZWI1MTg1MGQ3NmYxYjE3', { :base_uri => 'http://sandbox.delivery.com' })
 		
 		result = client.search(params["location"])
 		results_hash = {}
