@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
 					name: m.summary.name,
 					address: "#{m.location.street}, #{m.location.city}, #{m.location.state}",
 					distance: m.location.distance,
-					cuisine: m.summary.cuisines
+					cuisine: m.summary.cuisines[0]
 				}
 			end
 		end
