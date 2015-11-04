@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username: MyString
+  orderID: 1
+  listOfItems: MyText
+
+two:
+  username: MyString
+  orderID: 1
+  listOfItems: MyText
