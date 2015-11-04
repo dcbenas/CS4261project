@@ -7,15 +7,12 @@ class OrdersController < ApplicationController
 		results_hash = {}
 
 		result.merchants.each do |m|
-			puts m
-			puts "\n\n\n"
 			if m.summary.type_label == "Restaurant"
 				results_hash[m.id] = {
 					name: m.summary.name,
 					address: "#{m.location.street}, #{m.location.city}, #{m.location.state}",
 					distance: m.location.distance,
-					#TODO: Fix cuisines, returns null always
-					cuisine: m.cuisines
+					cuisine: m.summary.cuisines
 				}
 			end
 		end
