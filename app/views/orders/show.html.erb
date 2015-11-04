@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Primaryuser:</strong>
+  <%= @order.primaryUser %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @order.location %>
+</p>
+
+<p>
+  <strong>Isplaced:</strong>
+  <%= @order.isPlaced %>
+</p>
+
+<p>
+  <strong>Reqd total:</strong>
+  <%= @order.reqd_total %>
+</p>
+
+<p>
+  <strong>Merchantid:</strong>
+  <%= @order.merchantID %>
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :orders
   resources :users
 
   get 'search' => 'orders#merchant_search'

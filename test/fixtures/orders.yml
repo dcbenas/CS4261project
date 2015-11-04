@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  primaryUser: MyString
+  location: MyText
+  isPlaced: false
+  reqd_total: 9.99
+  merchantID: 1
+
+two:
+  primaryUser: MyString
+  location: MyText
+  isPlaced: false
+  reqd_total: 9.99
+  merchantID: 1
