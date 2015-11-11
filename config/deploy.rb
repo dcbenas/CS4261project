@@ -1,5 +1,5 @@
 # Change these
-server '104.236.124.199', port: 22, roles: [:web, :app, :db], primary: true
+server '104.131.244.218', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'https://github.com/dcbenas/CS4261project.git'
 set :application,     'CS4261project'
