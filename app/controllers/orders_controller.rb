@@ -20,6 +20,16 @@ class OrdersController < ApplicationController
 
 		render json: results_hash
 	end
+  # For Location Search endpoint. Given user location, map to every other    order and append GMaps distance
+  def location_search
+	user_location = params["user_location"]
+	destinations = Array.new
+	Order.find_each do |curr|
+		destinations.push(curr.location)
+	end
+	url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + user_location + "&mode=walking&key=AIzaSyCjFOYfjhdZJW8X1yQc-E9T9et5nd-BZBc&destinations=" + destinations.join("|")
+	
+  end
 
   # GET /orders
   # GET /orders.json
