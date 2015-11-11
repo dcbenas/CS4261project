@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Username: MyString
+  OrderID: 1
+  Listofitems: MyText
+  Total: 1.5
+
+two:
+  Username: MyString
+  OrderID: 1
+  Listofitems: MyText
+  Total: 1.5
