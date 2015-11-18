@@ -38,11 +38,16 @@ class OrdersController < ApplicationController
 	Order.all.each do |order|
     distance = response['rows'][0]['elements'][counter]['distance']['value']
 		if !order.isPlaced and distance < 3218 # replace this with find_by
+      order_total = 0
+      UserOrder.where("OrderID = #{order.id}").each do |order|
+        order_total = order_total + order['Total'].to_f
+      end
 			distanced_orders.push(
 				{
 					id: order.id,
 					location: order.location,
 					reqd_total: order.reqd_total,
+          order_total: order_total,
 					merchantID: order.merchantID,
 					distance: distance
 				}
