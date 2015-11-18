@@ -36,14 +36,15 @@ class OrdersController < ApplicationController
 	counter = 0
 
 	Order.all.each do |order|
-		if !order.isPlaced # replace this with find_by
+    distance = response['rows'][0]['elements'][counter]['distance']['value']
+		if !order.isPlaced and distance < 3218 # replace this with find_by
 			distanced_orders.push(
 				{
 					id: order.id,
 					location: order.location,
 					reqd_total: order.reqd_total,
 					merchantID: order.merchantID,
-					distance: response['rows'][0]['elements'][counter]['distance']['value']
+					distance: distance
 				}
 			)
 		end
