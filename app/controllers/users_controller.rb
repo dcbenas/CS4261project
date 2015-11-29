@@ -12,6 +12,11 @@ class UsersController < ApplicationController
 	render json: flag
   end
 
+  def minion_search
+	userID = params["fbid"]
+
+  end
+
   # GET /users
   # GET /users.json
   def index

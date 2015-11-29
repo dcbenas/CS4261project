@@ -3,12 +3,13 @@ class UsersController < ApplicationController
 
   def duplicate_search
 	userID = params["fbid"]
-	flag = false
+	flag = 0
 	User.all.each do |curr|
 		if (curr.email == userID) 
-		    flag = true
+		    flag = 1
 		end
 	end
+	render json: flag
   end
 
   # GET /users
