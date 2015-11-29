@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get 'search' => 'orders#merchant_search'
   get 'orderbylocation' => 'orders#location_search'
+  get 'isduplicate' => 'users#duplicate_search'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
