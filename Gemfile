@@ -17,6 +17,8 @@ gem 'therubyracer', platforms: :ruby
 
 gem 'httparty'
 
+gem 'pry'
+
 group :development do
     gem 'capistrano',         require: false
     gem 'capistrano-rvm',     require: false
