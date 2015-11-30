@@ -2,19 +2,14 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def duplicate_search
-	userID = params["fbid"]
-	flag = 0
-	User.all.each do |curr|
-		if (curr.email == userID) 
-		    flag = 1
-		end
-	end
-	render json: flag
-  end
-
-  def minion_search
-	userID = params["fbid"]
-
+  	userID = params["fbid"]
+  	flag = 0
+  	User.all.each do |curr|
+  		if (curr.email == userID) 
+  		  flag = 1
+  		end
+  	end
+  	render json: flag
   end
 
   # GET /users

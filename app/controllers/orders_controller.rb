@@ -59,6 +59,35 @@ class OrdersController < ApplicationController
 	render json: distanced_orders
   end
 
+  def minion_search
+    userID = params["fbid"]
+    result = {}
+
+    if Order.where(primaryUser: userID).count > 0
+      minions = []
+      currentOrderID = Order.where(primaryUser: userID).first.id
+
+      UserOrder.where(OrderID: currentOrderID).each do |userOrder|
+        User.where(email: userOrder.Username).each do |u|
+          minions.push({
+            name: u.name,
+            phone: u.phone,
+            venmoID: u.venmoId,
+            listOfItems: userOrder.Listofitems,
+            total: userOrder.Total
+          })
+        end
+      end  
+
+      result = {
+        isPlaced: Order.where(primaryUser: userID).first.isPlaced, # MAJOR ASSUMPTION: only one order per user
+        minions: minions
+      }    
+    end
+
+    render json: result
+  end
+
   # GET /orders
   # GET /orders.json
   def index
