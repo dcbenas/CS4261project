@@ -80,6 +80,7 @@ class OrdersController < ApplicationController
       end  
 
       result = {
+        orderID: currentOrder.id,
         isPlaced: currentOrder.isPlaced,
         merchantID: currentOrder.merchantID,
         minions: minions
