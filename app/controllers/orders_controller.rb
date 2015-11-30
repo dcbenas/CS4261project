@@ -65,9 +65,9 @@ class OrdersController < ApplicationController
 
     if Order.where(primaryUser: userID).count > 0
       minions = []
-      currentOrderID = Order.where(primaryUser: userID).first.id
+      currentOrder = Order.where(primaryUser: userID).first
 
-      UserOrder.where(OrderID: currentOrderID).each do |userOrder|
+      UserOrder.where(OrderID: currentOrder.id).each do |userOrder|
         User.where(email: userOrder.Username).each do |u|
           minions.push({
             name: u.name,
@@ -80,7 +80,8 @@ class OrdersController < ApplicationController
       end  
 
       result = {
-        isPlaced: Order.where(primaryUser: userID).first.isPlaced, # MAJOR ASSUMPTION: only one order per user
+        isPlaced: currentOrder.isPlaced,
+        merchantID: currentOrder.merchantID,
         minions: minions
       }    
     end
