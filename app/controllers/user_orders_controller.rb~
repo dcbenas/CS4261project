@@ -49,7 +49,7 @@ class UserOrdersController < ApplicationController
 
       host_cell_number = User.where(Email: host_order.primaryUser).first.phone
       sms = client.account.messages.create({
-        :body => "Hello from Order2gether! Your order total has been fulfilled. Go to My Orders to review and place your order.",
+        :body => "Your order total has been fulfilled!",
         :to => "#{host_cell_number}",
         :from => "+17605762473" #trial credentials
         })

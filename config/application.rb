@@ -28,7 +28,7 @@ module CS4261project
 	  'Access-Control-Allow-Origin' => 'http://nibble.azurewebsites.net',
 	  'Access-Control-Request-Method' => '*',
 	  # Added to fix PUT 
-	  'Access-Control-Allow-Methods' => 'POST, GET, OPTIONS, PUT, DELETE',
+	  'Access-Control-Allow-Methods' => 'POST, GET, OPTIONS, PUT, DELETE, PATCH',
 	  'Access-Control-Allow-Headers' => 'Content-Type'
 	})
   end
