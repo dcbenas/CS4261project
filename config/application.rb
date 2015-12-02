@@ -29,7 +29,7 @@ module CS4261project
 	  'Access-Control-Request-Method' => '*',
 	  # Added to fix PUT 
 	  'Access-Control-Allow-Methods' => 'POST, GET, OPTIONS, PUT, DELETE'
-	  'Access-Control-Allow-Headers' => 'Content-Type
+	  'Access-Control-Allow-Headers' => 'Content-Type'
 	})
   end
 end
