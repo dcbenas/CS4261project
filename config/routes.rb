@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'orderbylocation' => 'orders#location_search'
   get 'isduplicate' => 'users#duplicate_search'
   get 'minionlookup' => 'orders#minion_search'
+  get 'venmo_req' => 'orders#venmo_req'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

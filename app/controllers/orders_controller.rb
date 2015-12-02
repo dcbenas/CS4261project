@@ -1,6 +1,20 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
+  def venmo_req
+    response = HTTParty.post("https://api.venmo.com/v1/payments?",
+      {
+        :query => {
+          :amount => params['amount'],
+          :username => params['username'],
+          :note => params['note'],
+          :access_token => params['access_token']
+        }
+      })
+
+    render json: response
+  end
+
   def merchant_search
 		client = Delivery::Client.new('MTExNTBjNTgyOGQ0NTFiOTc0ZWI1MTg1MGQ3NmYxYjE3', { :base_uri => 'http://sandbox.delivery.com' })
 		
