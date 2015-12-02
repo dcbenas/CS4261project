@@ -34,6 +34,26 @@ class UserOrdersController < ApplicationController
         format.json { render json: @user_order.errors, status: :unprocessable_entity }
       end
     end
+
+    # check new order total and notify host via SMS if order minimum has been met
+    current_order_total = 0.0
+    UserOrder.where(OrderID: @user_order.OrderID).each do |uo|
+      current_order_total = current_order_total + uo.Total
+    end
+
+    host_order = Order.find(@user_order.OrderID)
+    if current_order_total >= host_order.reqd_total.to_f
+      account_sid = 'x'
+      auth_token = 'x'
+      client = Twilio::REST::Client.new account_sid, auth_token
+
+      host_cell_number = User.where(Email: host_order.primaryUser).first.phone
+      sms = client.account.messages.create({
+        :body => "Your order total has been fulfilled!",
+        :to => "#{host_cell_number}",
+        :from => "x"
+        })
+    end
   end
 
   # PATCH/PUT /user_orders/1
