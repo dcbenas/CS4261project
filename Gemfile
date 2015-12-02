@@ -19,6 +19,8 @@ gem 'httparty'
 
 gem 'pry'
 
+gem 'twilio-ruby'
+
 group :development do
     gem 'capistrano',         require: false
     gem 'capistrano-rvm',     require: false
