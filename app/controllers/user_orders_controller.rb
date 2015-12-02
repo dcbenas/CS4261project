@@ -25,7 +25,6 @@ class UserOrdersController < ApplicationController
   # POST /user_orders.json
   def create
     @user_order = UserOrder.new(user_order_params)
-
     respond_to do |format|
       if @user_order.save
         format.html { redirect_to @user_order, notice: 'User order was successfully created.' }

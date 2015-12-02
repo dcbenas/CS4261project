@@ -22,41 +22,41 @@ class OrdersController < ApplicationController
 	end
   # For Location Search endpoint. Given user location, map to every other order and append GMaps distance
   def location_search
-	user_location = params["user_location"]
-	destinations = []
+  	user_location = params["user_location"]
+  	destinations = []
 
-	Order.all.each do |curr|
-		destinations.push(curr.location)
-	end
+  	Order.all.each do |curr|
+  		destinations.push(curr.location)
+  	end
 
-	url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + user_location + "&mode=walking&key=AIzaSyCjFOYfjhdZJW8X1yQc-E9T9et5nd-BZBc&destinations=" + destinations.join("|")
-	response = HTTParty.get(url)
+  	url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + user_location + "&mode=walking&key=AIzaSyCjFOYfjhdZJW8X1yQc-E9T9et5nd-BZBc&destinations=" + destinations.join("|")
+  	response = HTTParty.get(url)
 
-	distanced_orders = []
-	counter = 0
+  	distanced_orders = []
+  	counter = 0
 
-	Order.all.each do |order|
-    distance = response['rows'][0]['elements'][counter]['distance']['value']
-		if !order.isPlaced and distance < 3218 # replace this with find_by
-      order_total = 0
-      UserOrder.where("OrderID = #{order.id}").each do |order|
-        order_total = order_total + order['Total'].to_f
-      end
-			distanced_orders.push(
-				{
-					id: order.id,
-					location: order.location,
-					reqd_total: order.reqd_total,
-          order_total: order_total,
-					merchantID: order.merchantID,
-					distance: distance
-				}
-			)
-		end
-		counter = counter + 1
-	end
+  	Order.all.each do |order|
+      distance = response['rows'][0]['elements'][counter]['distance']['value']
+  		if !order.isPlaced and distance < 3218 # replace this with find_by
+        order_total = 0
+        UserOrder.where("OrderID = #{order.id}").each do |order|
+          order_total = order_total + order['Total'].to_f
+        end
+  			distanced_orders.push(
+  				{
+  					id: order.id,
+  					location: order.location,
+  					reqd_total: order.reqd_total,
+            order_total: order_total,
+  					merchantID: order.merchantID,
+  					distance: distance
+  				}
+  			)
+  		end
+  		counter = counter + 1
+  	end
 
-	render json: distanced_orders
+  	render json: distanced_orders
   end
 
   def minion_search
