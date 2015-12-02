@@ -43,15 +43,15 @@ class UserOrdersController < ApplicationController
 
     host_order = Order.find(@user_order.OrderID)
     if current_order_total >= host_order.reqd_total.to_f
-      account_sid = 'x'
-      auth_token = 'x'
+      account_sid = 'ACd8e80d698128ba7ac744054f5ccdc705' #trial credentials
+      auth_token = '4b34a2a4f74ced7d1214bcf53efae432' #trial credentials
       client = Twilio::REST::Client.new account_sid, auth_token
 
       host_cell_number = User.where(Email: host_order.primaryUser).first.phone
       sms = client.account.messages.create({
         :body => "Your order total has been fulfilled!",
         :to => "#{host_cell_number}",
-        :from => "x"
+        :from => "+17605762473" #trial credentials
         })
     end
   end
