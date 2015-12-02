@@ -25,7 +25,7 @@ module CS4261project
 
 # CORS Stuff
 	config.action_dispatch.default_headers.merge!({
-	  'Access-Control-Allow-Origin' => '*',
+	  'Access-Control-Allow-Origin' => 'nibble.azurewebsites.net',
 	  'Access-Control-Request-Method' => '*',
 	  # Added to fix PUT 
 	  'Access-Control-Allow-Methods' => 'POST, GET, OPTIONS, PUT, DELETE',
